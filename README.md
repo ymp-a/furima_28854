@@ -32,13 +32,18 @@
 - has_one :sold_item
 - has_one_attached :image
 
-## sold_items テーブル
+## addresses テーブル
 
-| Column       | Type    | Options     |
-| ------------ | ------- | ----------- |
-| postalcode   | integer | null: false |
-| address      | string  | null: false | 
-| phone_number | integer | null: false |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postalcode    | integer    | null: false                    |
+| prefecture    | integer    | null: false                    | 
+| city          | string     | null: false                    | 
+| address       | string     | null: false                    | 
+| building_name | string     | null: false                    | 
+| phone_number  | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
+
 
 ## deals テーブル
 
