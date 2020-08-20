@@ -15,7 +15,7 @@
 ### Association
 
 - has_many :items
-- has_one :sold_items
+- has_one :sold_item
 
 ## items テーブル
 
@@ -28,8 +28,8 @@
 
 ### Association
 
-- belongs_to :users
-- has_one :sold_items
+- belongs_to :user
+- has_one :sold_item
 - has_one_attached :image
 
 ## sold_items テーブル
