@@ -40,12 +40,6 @@
 | address      | string  | null: false | 
 | phone_number | integer | null: false |
 
-### Association
-
-- belongs_to :users
-- belongs_to :items
-
-
 ## deals テーブル
 
 | Column | Type       | Option                         |
