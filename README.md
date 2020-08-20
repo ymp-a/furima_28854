@@ -45,3 +45,11 @@
 - belongs_to :users
 - belongs_to :items
 
+
+## deals テーブル
+
+| Column | Type       | Option                         |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true | 
+
