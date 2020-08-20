@@ -19,17 +19,18 @@
 
 ## items テーブル
 
-| Column     | Type    | Options     |
-| ---------- | ------- | ----------- |
-| image      | text    | null: false |
-| name       | string  | null: false | 
-| descrption | text    | null: false |
-| price      | integer | null: false |
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| name       | string     | null: false                    | 
+| descrption | text       | null: false                    |
+| price      | integer    | null: false                    |
+| user       | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :users
 - has_one :sold_items
+- has_one_attached :image
 
 ## sold_items テーブル
 
