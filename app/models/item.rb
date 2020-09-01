@@ -20,7 +20,7 @@ class Item < ApplicationRecord
     validates :cost_bearer
     validates :consignor
     validates :delivery_date
-    validates :price
+    validates :image
   end
 
   #ジャンルの選択が「--」の時は保存できないようにする
@@ -31,6 +31,8 @@ class Item < ApplicationRecord
     validates :consignor_id
     validates :delivery_date_id  
   end
+
+    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 
 
 end
