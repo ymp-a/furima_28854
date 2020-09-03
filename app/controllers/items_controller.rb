@@ -31,12 +31,13 @@ class ItemsController < ApplicationController
     item.destroy
     redirect_to root_path
   end
+
   private
 
   def set_item
     @item = Item.find(params[:id])
   end
-  
+
   def move_to_usersession
     redirect_to user_session_path unless user_signed_in?
   end
