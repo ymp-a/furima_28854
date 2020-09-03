@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:edit, :show, :update]
+
   def index
     @item = Item.order('created_at DESC')
   end
@@ -17,7 +19,24 @@ class ItemsController < ApplicationController
     end
   end
 
+  
+  def edit
+    redirect_to user_session_path unless user_signed_in?
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   private
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
 
   def item_params
     params.require(:item).permit(:image, :name, :item_descrption, :category_id, :status_id,
