@@ -5,13 +5,12 @@ class Item < ApplicationRecord
   belongs_to_active_hash :cost_bearer
   belongs_to_active_hash :consignor
   belongs_to_active_hash :delivery_date
-  
+
   belongs_to :user
   # has_one :deal
   has_one_attached :image
 
-
-  #空の投稿を保存できないようにする
+  # 空の投稿を保存できないようにする
   with_options presence: true do
     validates :name
     validates :item_descrption
@@ -23,16 +22,14 @@ class Item < ApplicationRecord
     validates :image
   end
 
-  #ジャンルの選択が「--」の時は保存できないようにする
+  # ジャンルの選択が「--」の時は保存できないようにする
   with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :status_id
     validates :cost_bearer_id
     validates :consignor_id
-    validates :delivery_date_id  
+    validates :delivery_date_id
   end
 
-    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
-
-
+  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 end
