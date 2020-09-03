@@ -19,7 +19,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  
   def edit
     redirect_to user_session_path unless user_signed_in?
   end
@@ -33,10 +32,10 @@ class ItemsController < ApplicationController
   end
 
   private
+
   def set_item
     @item = Item.find(params[:id])
   end
-
 
   def item_params
     params.require(:item).permit(:image, :name, :item_descrption, :category_id, :status_id,
