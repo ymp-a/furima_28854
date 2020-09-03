@@ -19,9 +19,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-  end
-
+  
   def edit
     redirect_to user_session_path unless user_signed_in?
   end
