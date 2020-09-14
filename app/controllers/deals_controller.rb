@@ -1,18 +1,20 @@
 class DealsController < ApplicationController
   before_action :move_to_usersession, only: [:index]
+  before_action :set_item_id, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
+    if @item.user.id == current_user.id #出品者は自分の出品物購入ページへいけない
+      redirect_to root_path
+      return
+    else    
     @deal = UserAddress.new
+    end
   end
 
 
 
   def create
-
-    @item = Item.find(params[:item_id])
     @deal = UserAddress.new(deal_params)
-    # binding.pry
     if @deal.valid?
       pay_item
       @deal.save
@@ -24,6 +26,9 @@ class DealsController < ApplicationController
 
 
   private
+  def set_item_id
+  @item = Item.find(params[:item_id])
+  end
 
   def deal_params
     params.require(:user_address).permit(:postalcode, :prefecture_id, :city, :address, :building_name, :phone_number).merge(user_id: current_user.id, token: params[:token], item_id: params[:item_id])
@@ -42,4 +47,6 @@ class DealsController < ApplicationController
   def move_to_usersession
     redirect_to user_session_path unless user_signed_in?
   end
+
+  
 end
