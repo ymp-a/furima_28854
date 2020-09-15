@@ -6,10 +6,11 @@ class UserAddress
   with_options presence: true do
     validates :token
     # 「住所」の郵便番号に関するバリデーション
-    validates :postalcode, format: { with: /\A[0-9]{3}(-)[0-9]{4}\z/, message: "is invalid. Include hyphen(-)" }
+    validates :postalcode, format: { with: /\A[0-9]{3}(-)[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
     validates :city
     validates :address
-    validates :phone_number, format: { with: /\A\d{,11}\z/, message: "is invalid. hyphen(-) cannot be included or must be within 11 digits"}
+    validates :phone_number, format: { with: /\A\d{,11}\z/,
+                                       message: 'is invalid. hyphen(-) cannot be included or must be within 11 digits' }
   end
   validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
 

@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :user_address do
     token { '090900dfghjhgfdfgh' }
-    user_id {1}
-    item_id {1}
+    user_id { 1 }
+    item_id { 1 }
     postalcode        { '111-1111' }
     prefecture_id     { 2 }
     city              { Faker::Address.city }

@@ -39,17 +39,20 @@ RSpec.describe UserAddress, type: :model do
     it '郵便番号にはハイフンが必要であること（123-4567となる)' do
       @user_address.postalcode = '1111111'
       @user_address.valid?
-      expect(@user_address.errors.full_messages).to include("Postalcode is invalid. Include hyphen(-)")
+      expect(@user_address.errors.full_messages).to include('Postalcode is invalid.
+                                                                Include hyphen(-)')
     end
     it '電話番号にはハイフンは不要であること' do
-      @user_address.phone_number = "123-4567-8901" 
+      @user_address.phone_number = '123-4567-8901'
       @user_address.valid?
-      expect(@user_address.errors.full_messages).to include("Phone number is invalid. hyphen(-) cannot be included or must be within 11 digits")
+      expect(@user_address.errors.full_messages).to include('Phone number is invalid.
+                            hyphen(-) cannot be included or must be within 11 digits')
     end
     it '電話番号は11桁以内であること' do
       @user_address.phone_number = '1234567890111111111'
       @user_address.valid?
-      expect(@user_address.errors.full_messages).to include("Phone number is invalid. hyphen(-) cannot be included or must be within 11 digits")
+      expect(@user_address.errors.full_messages).to include('Phone number is invalid.
+                            hyphen(-) cannot be included or must be within 11 digits')
     end
   end
 end
