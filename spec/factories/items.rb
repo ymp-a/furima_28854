@@ -8,5 +8,9 @@ FactoryBot.define do
     consignor_id      { 2 }
     delivery_date_id  { 2 }
     price             { 300 }
+    user
+    after(:build) do |item|
+      item.image.attach(io: File.open('public/images/hukuroudrill.jpeg'), filename: 'hukuroudrill.jpeg')
+    end
   end
 end
