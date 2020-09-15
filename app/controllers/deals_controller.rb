@@ -3,7 +3,7 @@ class DealsController < ApplicationController
   before_action :set_item_id, only: [:index, :create]
 
   def index
-    if @item.user.id == current_user.id # 出品者は自分の出品物購入ページへいけない
+    if @item.user.id == current_user.id || !@item.deal.nil? # 出品者は自分の出品物購入ページへいけない,または落札後購入ページに遷移させない
       redirect_to root_path
     else
       @deal = UserAddress.new
@@ -22,6 +22,7 @@ class DealsController < ApplicationController
   end
 
   private
+
 
   def set_item_id
     @item = Item.find(params[:item_id])
