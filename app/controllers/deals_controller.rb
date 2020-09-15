@@ -5,7 +5,6 @@ class DealsController < ApplicationController
   def index
     if @item.user.id == current_user.id # 出品者は自分の出品物購入ページへいけない
       redirect_to root_path
-      nil
     else
       @deal = UserAddress.new
     end
